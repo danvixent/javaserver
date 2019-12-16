@@ -15,14 +15,12 @@ class StaticFileServer implements HttpHandler {
     public static void main(String args[]) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(InetAddress.getLoopbackAddress(), 8082), 0);
         server.start();
-        // ... more server contexts
         server.createContext("/", new StaticFileServer());
     }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        String fileId = exchange.getRequestURI().getPath();
-        fileId = "C:\\" + fileId;
+        String fileId = ""
         File file = getFile(fileId);
         if (file == null) {
             String response = "Error 404 File not found.";
