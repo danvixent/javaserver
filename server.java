@@ -20,6 +20,7 @@ class StaticFileServer implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        //escape the slashes as in * C:\\Users\\Daniel\\index.html *
         String fileId = "";
         File file = getFile(fileId);
         if (file == null) {
